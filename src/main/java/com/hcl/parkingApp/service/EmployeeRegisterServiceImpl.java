@@ -5,11 +5,17 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.parkingApp.dto.EmployeeDTO;
 import com.hcl.parkingApp.entity.Employee;
+import com.hcl.parkingApp.entity.RequestForSlot;
+import com.hcl.parkingApp.entity.Slots;
 import com.hcl.parkingApp.repository.EmployeeRegisterRepository;
+import com.hcl.parkingApp.repository.RequestSlotRepository;
+import com.hcl.parkingApp.repository.SlotsRepository;
 @Service
 public class EmployeeRegisterServiceImpl implements EmployeeRegisterService{
 
 	@Autowired EmployeeRegisterRepository empRepository;
+	@Autowired RequestSlotRepository requestRepo;
+	@Autowired SlotsRepository slotsRepo;
 	@Override
 	public String registerEmployee(EmployeeDTO employeeDTO) {
 		Employee employee = new Employee();
@@ -41,7 +47,30 @@ public class EmployeeRegisterServiceImpl implements EmployeeRegisterService{
 	}
 	return "Employee doen't exist";
 }
+	@Override
+	public String sendRequest(long empId) {
+		
+		Employee employee= empRepository.findById(empId).get();	
+		RequestForSlot req = new RequestForSlot();
+		req.setEmployee(employee);
+		req.setSlotId(req.getSlotId());
+		
+		requestRepo.save(req);
+		
+		return "Request for slot has been sent successfully.. ";
+	}
 	
+	@Override
+	public String releaseSlot(int slotId, int days) {
+		
+		Slots slot = slotsRepo.findBySlotId(slotId);
+		slot.setSlotStatus("Available");
+		slot.setDays(days);
+		slotsRepo.save(slot);
+		
+		return "your slot released successfully for days";
+	}
+
 	
 
 }

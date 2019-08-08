@@ -1,12 +1,12 @@
 package com.hcl.parkingApp.entity;
 
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,22 +17,28 @@ public class Slots {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 
-	private long slotId;
+	private int slotId;
     private String slotStatus;
 	private String slotDesc;
+	private int days;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "empId")
-	private Employee employee;
+	@OneToOne
+	 Employee employee;
 	
 	
-	public long getSlotId() {
+	public int getSlotId() {
 		return slotId;
 	}
-	public void setSlotId(long slotId) {
+	public void setSlotId(int slotId) {
 		this.slotId = slotId;
 	}
 	
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
 	public String getSlotStatus() {
 		return slotStatus;
 	}
@@ -53,9 +59,10 @@ public class Slots {
 	}
 	@Override
 	public String toString() {
-		return "Slots [slotId=" + slotId + ", slotStatus=" + slotStatus + ", slotDesc=" + slotDesc + ", employee="
-				+ employee + "]";
+		return "Slots [slotId=" + slotId + ", slotStatus=" + slotStatus + ", slotDesc=" + slotDesc + ", days=" + days
+				+ ", employee=" + employee + "]";
 	}
+	
 	
 
 }
