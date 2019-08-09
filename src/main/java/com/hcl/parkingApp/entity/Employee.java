@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
 @Table
 public class Employee {
@@ -17,7 +16,20 @@ public class Employee {
     private String empName;
 	private String designation;
 	private int joinedYear;
+	
     
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Employee(long empId, String password, String empName, String designation, int joinedYear) {
+		super();
+		this.empId = empId;
+		this.password = password;
+		this.empName = empName;
+		this.designation = designation;
+		this.joinedYear = joinedYear;
+	}
 	public String getPassword() {
 	return password;
 }

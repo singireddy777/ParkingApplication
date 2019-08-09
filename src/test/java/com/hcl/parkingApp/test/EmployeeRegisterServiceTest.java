@@ -75,7 +75,7 @@ public class EmployeeRegisterServiceTest {
 		Slots slots = new Slots();
 		slots.setSlotId(22);
 		slots.setSlotDesc("blockA");
-		slots.setSlotStatus("Avail  able");
+		slots.setSlotStatus("Available");
 		slots.setDays(4);
 		
 		Mockito.when(empRepo.findById(Mockito.any())).thenReturn(Optional.of(employee));

@@ -37,7 +37,7 @@ public class EmployeeRegisterServiceImpl implements EmployeeRegisterService{
 		Employee employee = empRepository.findByEmpName(empName);
 		if(employee!=null) {
 			
-	         if(employee.getEmpName().equalsIgnoreCase(empName)&&employee.getPassword().equalsIgnoreCase(password)) {
+	         if(employee.getEmpName().equalsIgnoreCase(empName)&&employee.getPassword().equals(password)) {
 	
 	    return "Login Successfully....";
 	        }

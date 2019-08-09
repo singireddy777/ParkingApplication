@@ -15,13 +15,14 @@ import com.hcl.parkingApp.service.EmployeeRegisterService;
 public class EmplyeeRegistrationController {
 	@Autowired
 	EmployeeRegisterService empService;
+	
 	@PostMapping("/employeeRegistration")
 public String userRegistration(@RequestBody EmployeeDTO employeeDTO) {
 	
 	return empService.registerEmployee(employeeDTO);
 }
 	
-@PostMapping("empLogin")	
+@PostMapping("/empLogin")	
 public String employeeLogin(@RequestParam ("empName") String empName, @RequestParam ("password") String password) {
 	
 return empService.LoginEmployee(empName, password);

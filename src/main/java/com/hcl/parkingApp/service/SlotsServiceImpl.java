@@ -39,7 +39,7 @@ public class SlotsServiceImpl implements SlotsService{
 				Slots slots2 = new Slots();
 				
 				slots2.setEmployee(emp);
-				slots2.setSlotDesc("blockA");
+				slots2.setSlotDesc("blockB");
 				slots2.setSlotId(slots2.getSlotId());
 				slots2.setSlotStatus("occupied");
 				slots2.setDays(0);
